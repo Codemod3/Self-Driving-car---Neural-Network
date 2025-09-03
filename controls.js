@@ -4,6 +4,7 @@ class Controls {
     this.backward = false;
     this.left = false;
     this.right = false;
+    //this is the change
 
     switch (type) {
       case "KEYS":
