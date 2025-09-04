@@ -37,7 +37,6 @@ class Car {
       this.sensor.update(roadBorders,traffic);
       const offsets = this.sensor.readings.map(s=>(s==null?0:1 - s.offset));
       const outputs = NeuralNetwork.feedForward(offsets,this.brain);  
-      console.log(outputs);
 
       if(this.useBrain){
         this.controls.forward=outputs[0];
@@ -115,7 +114,7 @@ class Car {
     this.y -= Math.cos(this.angle) * this.speed;
   }
 
-  draw(ctx,color) {
+  draw(ctx,color,drawSensor=false) {
     if(this.damaged){
         ctx.fillStyle = "white";
     }
@@ -132,7 +131,7 @@ class Car {
 
     // Draw polygon outline for debugging
 
-    if(this.sensor){
+    if(this.sensor && drawSensor){
       this.sensor.draw(ctx);
     }
     
