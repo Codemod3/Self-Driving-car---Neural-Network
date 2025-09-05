@@ -46,3 +46,16 @@ function getRGBA(value){
    const B=value>0?0:255;
    return "rgba("+R+","+G+","+B+","+alpha+")";
 }
+
+// Standard normal via Box–Muller
+function randn() {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+}
+
+function clamp(x, lo, hi) {
+    return Math.max(lo, Math.min(hi, x));
+}
+

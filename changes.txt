@@ -1,0 +1,25 @@
+Neural Network
+Initialization
+Switched to Xavier/Glorot initialization instead of full random [-1,1] → prevents early saturation, more stable learning.
+Biases start at 0 instead of random → lets them shift naturally during evolution.
+FeedForward
+Changed threshold check from sum > bias to sum + bias > 0 → makes biases act as proper thresholds.
+Mutation
+Replaced linear interpolation mutation with Gaussian noise mutation (scaled by fan-in).
+Added clamp to keep weights/biases in [-1,1] range.
+Mutations are gentler and more meaningful → car learns instead of random resets.
+
+Utils
+Added two helper functions:
+randn() → generates Gaussian noise (Box–Muller).
+clamp(x, lo, hi) → keeps values bounded.
+
+Script.js
+Best Car Handling
+Removed shadowing bug (const bestCar inside animate).
+Now updates a single global bestCar each frame → ensures correct saving & visualization.
+Save function now saves the actual best car brain, not always cars[0].
+Mutation Strength
+Reduced mutation rate (0.1 → 0.15 Gaussian) → less destructive, steadier improvement.
+Visualization
+Lowered ghost-car opacity (0.2 → 0.15) → clearer view of the best car.
